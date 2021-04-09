@@ -4,7 +4,17 @@ def jogar():
     print("***Bem vindo ao jogo de Forca!***")
     print("*********************************")
 
-    palavra_secreta = "maça".upper()
+    arquivo = open("palavras.txt", "r")
+    palavras = []
+    for linha in arquivo:
+        linha = linha.strip()
+        palavras.append(linha)
+
+    arquivo.close()
+
+    numero = random.randrange(0,len(palavras))
+    palavra_secreta = palavras[numero].upper()
+
     letras_acertadas = ["_" for letra in palavra_secreta]
 
     acertou = False
@@ -36,7 +46,7 @@ def jogar():
     else:
         print("Você perdeu!!")
 
-print("Fim do jogo")
+    print("Fim do jogo")
 
 if (__name__ == "__main__"):
     jogar()
